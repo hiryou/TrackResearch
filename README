@@ -65,10 +65,10 @@ Suppose my ODIN username is longuyen. I want to report my working hours from Jul
     $ php main.php -f 2012-07-01 -t 2012-12-31 -p -u longuyen
     # You will be asked for password
     
-Depend on how many tickets you have on TRACK, the script may take up to 15 minutes
-or more to fetch all of them. Detailed statistics will be printed on your terminal.
-They are also saved in newly created .txt files which you will find in the this
-folder when the script terminates.
+Depend on how many tickets you have on TRACK, the script may take up to 5 minutes
+to fetch all of them. Detailed statistics will be printed on your terminal. They 
+are also saved in newly created .txt files which you will find in the this folder 
+when the script terminates.
 
 
 
