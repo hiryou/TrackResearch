@@ -26,6 +26,10 @@ $odinBot = $odinAuth->getAuth();
 
 // Track object receives $odinBot in order to browse our TRACK website
 $track = new MyTickets($odinBot);
+$track->msg('ODIN username: '.$reader->getOdinUsr());
+$track->msg('From date: '.$reader->getDateFrom());
+$track->msg('To date: '.$reader->getDateTo());
+$track->msg('');
 $track->setDateFrom($reader->getDateFrom());
 $track->setDateTo($reader->getDateTo());
 while ($track->fetchNext()) {
