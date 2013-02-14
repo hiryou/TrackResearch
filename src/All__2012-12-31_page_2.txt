@@ -1,0 +1,207 @@
+#938: Miscellaneous
+Billable hours = 40.25
+Non-billable hours = 14.25
+------------------------------------------------------------
+
+#937: ExtJs table layout admin view users
+Billable hours = 9.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#936: Add security check upon document download
+Billable hours = 2
+Non-billable hours = 0
+------------------------------------------------------------
+
+#935: Update Exec proposal summary view
+Billable hours = 1
+Non-billable hours = 0
+------------------------------------------------------------
+
+#921: Integrate Programmatic review
+Billable hours = 0.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#920: Update new layout + info for Admin summary report page
+Billable hours = 1
+Non-billable hours = 0
+------------------------------------------------------------
+
+#918: Fix the entire PI & Admin Report upload page
+Billable hours = 3
+Non-billable hours = 0
+------------------------------------------------------------
+
+#917: Problem with PI report submission
+Billable hours = 2.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#916: Get Final Report and Draft Final Report show up correctly
+Billable hours = 3
+Non-billable hours = 0
+------------------------------------------------------------
+
+#901: Move all current up-to-date files from live -> dev site
+Billable hours = 4.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#899: Fix SVN on live and dev sites
+Billable hours = 0
+Non-billable hours = 2
+------------------------------------------------------------
+
+#898: Remove queries to/from table submitted_docs
+Billable hours = 12
+Non-billable hours = 0
+------------------------------------------------------------
+
+#896: Calculate fund request amount on Admin internal review form
+Billable hours = 2
+Non-billable hours = 0
+------------------------------------------------------------
+
+#895: Integrate new internal review weights for 2013 proposals
+Billable hours = 0.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#894: Make sure docs download page works correctly
+Billable hours = 0.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#888: Fix Admin proposal form view
+Billable hours = 3
+Non-billable hours = 0
+------------------------------------------------------------
+
+#887: Add progress report to project summary info
+Billable hours = 3.75
+Non-billable hours = 0
+------------------------------------------------------------
+
+#886: Fix Admin summary report display on IE
+Billable hours = 0.75
+Non-billable hours = 0
+------------------------------------------------------------
+
+#885: Add navigation to Admin proposal full review page
+Billable hours = 0.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#884: Update internal review weights for 2013 proposals
+Billable hours = 3
+Non-billable hours = 0
+------------------------------------------------------------
+
+#883: Change layout for Programmatic Review section
+Billable hours = 1
+Non-billable hours = 0
+------------------------------------------------------------
+
+#867: Make sure proposals are showing up correctly under PI
+Billable hours = 0.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#866: Fix proposal view form layout
+Billable hours = 2.75
+Non-billable hours = 0
+------------------------------------------------------------
+
+#865: Update new search filters for PI proposal editing form
+Billable hours = 0.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#864: Fix peer review by-name assignment page
+Billable hours = 0.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#863: Update new search form for Admin browse proposals page
+Billable hours = 0.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#858: Fix Admin internal review form
+Billable hours = 1
+Non-billable hours = 0
+------------------------------------------------------------
+
+#857: Manage proposals properly on Admin internal review list page
+Billable hours = 0.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#856: Update new layout for Admin internal review list page
+Billable hours = 0.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#855: Manage docs properly on Exec show proposal page
+Billable hours = 0.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#854: Add navigation for exec show proposal page
+Billable hours = 0.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#853: Remove USDOT info from the system
+Billable hours = 0.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#852: Table layout for Exec summary report page
+Billable hours = 7
+Non-billable hours = 0
+------------------------------------------------------------
+
+#845: Email notification upon draft final report submission
+Billable hours = 3
+Non-billable hours = 0
+------------------------------------------------------------
+
+#840: Change layout + Use ExtJs table for Admin review summary report page
+Billable hours = 10.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#839: Fix Admin show proposal page and remove all unused/incorrect referenced variables
+Billable hours = 0.5
+Non-billable hours = 0
+------------------------------------------------------------
+
+#838: Add navigation to Admin review summary page
+Billable hours = 0.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#837: Add navigation to Admin review summary report page
+Billable hours = 0.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#836: Add navigation to Admin sending email page
+Billable hours = 0.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#835: Add navigation to Admin adding account page
+Billable hours = 0.25
+Non-billable hours = 0
+------------------------------------------------------------
+
+#817: Initialize workplace
+Billable hours = 3
+Non-billable hours = 0
+------------------------------------------------------------
+
+Total Billable hours = 125.75
+Total Non-billable hours = 16.25

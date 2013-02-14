@@ -36,10 +36,13 @@ class Curl_CurlBot {
 	 */
 	public function __construct($userAgent = null, $useCookies = true, $useCache = false) {
 		// user agent
-		if ($userAgent)
+		if ($userAgent) {
 			$this->_userAgent = $userAgent;
-		else 
-			$this->_userAgent = $_SERVER['HTTP_USER_AGENT'];
+        } else {
+            if (isset($_SERVER['HTTP_USER_AGENT'])) { 
+                $this->_userAgent = $_SERVER['HTTP_USER_AGENT'];
+            }
+        }
 			
 		// use cache or fresh connect
 		$this->_useCache = $useCache;

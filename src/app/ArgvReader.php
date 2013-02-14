@@ -49,6 +49,7 @@ final class ArgvReader {
 	    }
         
         // loop through $argv elements to associate appropriate pairs of arg $key=>$val
+        $idx = 0;
         $argKeys = array_keys(self::$_ARG_KEY_VAL_MAP);
         while ($idx<count($argv)) {
             $key = ''; 
