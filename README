@@ -57,20 +57,18 @@ USAGE
 USAGE EXAMPLES
 --------------
 
-The current version only support reports for all tickets, i.e. everything you have
-been working on will be reported. I'll update it soon to allow you filter by project(s).
+The current version fetches all of your tickets on TRACK, i.e. everything you have
+been working on will be reported. I'll update it soon to allow filtering by project(s).
 
 Suppose my ODIN username is longuyen. I want to report my working hours from Jul 01,
 2012 to Dec 31, 2012. Below is how I'll specify my arguments:
     $ php main.php -f 2012-07-01 -t 2012-12-31 -p -u longuyen
-    # You will be asked for password
+    # Password prompt
     
-Depend on how many tickets you have on TRACK, the script may take up to 5 minutes
-to fetch all of them. Detailed statistics will be printed on your terminal. They 
-are also saved in newly created .txt files which you will find in the this folder 
-when the script terminates.
-
-Branch Master added this line
+Depend on how many tickets you have, the script may take up to 5 minutes to fetch 
+all of them. Detailed statistics will be printed on your terminal. They are also 
+saved in newly created .txt files which you will find in the this folder when the 
+script terminates.
 
 
 
