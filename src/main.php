@@ -17,7 +17,7 @@ require_once(LIB_PATH.'/Function/System.php');
 $reader = new ArgvReader();
 $reader->readArgs($argv);
 if ($reader->getOdinPwd()=='') {
-    $reader->passwordPrompt("Your ODIN Password: ");
+    $reader->passwordPrompt("Enter your ODIN Password: ");
 }
 
 // ODIN bot to crawl PDX websites with given authentication
@@ -29,9 +29,16 @@ $track = new MyTickets($odinBot);
 $track->msg('ODIN username: '.$reader->getOdinUsr());
 $track->msg('From date: '.$reader->getDateFrom());
 $track->msg('To date: '.$reader->getDateTo());
+if ( $reader->getProjects() != '' ) {
+    $track->msg('Project(s): '.$reader->getProjects());
+} else {
+    $track->msg('Project(s): ALL');
+}
 $track->msg('');
+
 $track->setDateFrom($reader->getDateFrom());
 $track->setDateTo($reader->getDateTo());
+$track->setProjectNames($reader->getProjects());
 while ($track->fetchNext()) {
     continue;
 }

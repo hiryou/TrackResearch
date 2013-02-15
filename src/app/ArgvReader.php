@@ -7,10 +7,14 @@ final class ArgvReader {
     private static $_dateFromArg    = '-f';
     private static $_dateToArg      = '-t';
     
-    private $_username = '';
-    private $_password = '';
+    private static $_projsArg       = '-pj';
+    
+    private $_username  = '';
+    private $_password  = '';
     private $_dateFrom  = '';
     private $_dateTo    = '';
+    
+    private $_projs     = '';
     
     private static $_ARG_KEY_VAL_MAP = Array();
     
@@ -20,6 +24,8 @@ final class ArgvReader {
         $this->_password = '';
         $this->_dateFrom    = '';
         $this->_dateTo      = '';
+        
+        $this->_projs = '';
         
         /**
          * Hashtable of argument prefix_key => value. 
@@ -37,7 +43,8 @@ final class ArgvReader {
             self::$_usrArg      => &$this->_username,
             self::$_pwdArg      => &$this->_password,
             self::$_dateFromArg => &$this->_dateFrom,
-            self::$_dateToArg   => &$this->_dateTo
+            self::$_dateToArg   => &$this->_dateTo,
+            self::$_projsArg    => &$this->_projs
         );
     }
 
@@ -89,6 +96,10 @@ final class ArgvReader {
     }
     public function getDateTo() {
         return $this->_dateTo;
+    }
+    
+    public function getProjects() {
+        return $this->_projs;
     }
 
     private function _appError($msg) {

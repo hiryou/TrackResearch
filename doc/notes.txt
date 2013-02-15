@@ -1,0 +1,21 @@
+My all tickets, desc created date, first page
+http://track.research.pdx.edu/my?page=0&order=created&sort=desc&tid_1[]=56&tid_1[]=73&tid_1[]=50&tid_1[]=75&tid_1[]=46&tid_1[]=76&tid_1[]=45&tid_1[]=74&tid_1[]=47&tid_1[]=49&tid_1[]=48
+My all tickets, desc created date, page 2
+http://track.research.pdx.edu/my?page=1&order=created&sort=desc&tid_1[]=56&tid_1[]=73&tid_1[]=50&tid_1[]=75&tid_1[]=46&tid_1[]=76&tid_1[]=45&tid_1[]=74&tid_1[]=47&tid_1[]=49&tid_1[]=48
+and so on...
+
+With respect to a project (e.g. OTREC), first page
+http://track.research.pdx.edu/my?page=0&order=created&sort=desc&tid_1[]=56&tid_1[]=73&tid_1[]=50&tid_1[]=75&tid_1[]=46&tid_1[]=76&tid_1[]=45&tid_1[]=74&tid_1[]=47&tid_1[]=49&tid_1[]=48&group_nid[]=271
+and page 2
+http://track.research.pdx.edu/my?page=1&order=created&sort=desc&tid_1[]=56&tid_1[]=73&tid_1[]=50&tid_1[]=75&tid_1[]=46&tid_1[]=76&tid_1[]=45&tid_1[]=74&tid_1[]=47&tid_1[]=49&tid_1[]=48&group_nid[]=271
+and so on...
+
+
+
+
+php track.php -u longuyen -f 2012-01-01 -t 2012-01-30 -p
+
+
+
+
+

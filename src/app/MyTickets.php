@@ -17,7 +17,10 @@ final class MyTickets {
      * $_projectIds is indexed by project name and value being project ID
      */
     private $_projectIds = Array();
-    private $_projectsName = '';
+    /**
+     * $_projectNames is String of project_names separated by comma, no spance in between!
+     */
+    private $_projectNames = '';
     
     private $_dateFrom  = '';
     private $_dateTo    = '';
@@ -31,8 +34,9 @@ final class MyTickets {
         $this->_dateTo    = '';
     }
     
-    public function setProjectNames($commaSeparatedProjName) {
-        $this->_projectNames = $commaSeparatedProjName;
+    public function setProjectNames($commaSeparatedProjNames) {
+        $commaSeparatedProjNames = str_replace(' ', '', $commaSeparatedProjNames);
+        $this->_projectNames = $commaSeparatedProjNames;
     }
     
     public function setDateFrom($date) {
@@ -45,11 +49,35 @@ final class MyTickets {
     
     public function fetchNext() {
         static $totPage = -1;
-        static $page = 0;
+        static $page    = 0;
+        static $projIds = Array();
+        
+        // first of all, see if a list of project names is specified
+        $url = self::$_baseUrl;
+        if ($totPage==-1 && $this->_projectNames!='') {
+            // project names to project ids separated by comma
+            $this->_fetchProjectIds();
+            $names = explode(',', $this->_projectNames);
+            foreach ($names as $name) {
+                if (isset($this->_projectIds[$name])) {
+                    $projIds[] = $this->_projectIds[$name];
+                }
+            }
+            
+            // correct project names were specified, include them in the base search url
+            if (count($projIds)) {
+                $projArgs = Array();
+                foreach ($projIds as $projId) {
+                    $projArgs[] = $this::$_groupIdArg.'=' . $projId;
+                }
+                $projArgs = implode('&', $projArgs);
+                $url .= '&' . $projArgs; 
+            }
+        }
         
         while ($page<$totPage || $totPage==-1) {
             // Construct the url to the current page of my tickets list
-            $url = str_replace('[$page]', $page, self::$_baseUrl);
+            $url = str_replace('[$page]', $page, $url);
             // and go to this page
             $this->msg('Fetching page ' . ($page+1) . '...');
             $this->_odinBot->navigateTo($url);
@@ -72,7 +100,12 @@ final class MyTickets {
             $this->msg('');
             
             // write this statistics to file
-            $fileName = 'All_'.$this->_dateFrom.'_'.$this->_dateTo.'_page_'.($page+1).'.txt';
+            if ($this->_projectNames != '') {
+                $prefix = $this->_projectNames;
+            } else {
+                $prefix = 'all';
+            }
+            $fileName = $prefix.'_'.$this->_dateFrom.'_'.$this->_dateTo.'_page_'.($page+1).'.txt';
             $this->_writeStatToFile($fileName, $tickets, $totBill, $totNonBill);
             $this->msg('-- Content written to file '.$fileName);
             $this->msg('');
@@ -133,6 +166,7 @@ final class MyTickets {
             $ticket->id     = trim($elements[0]->nodeValue);
             $ticket->url    = 'http://track.research.pdx.edu/project/otrec/ticket/' . $ticket->id;
             $ticket->name   = trim($elements[1]->nodeValue);
+            $ticket->project_name = trim($elements[2]->nodeValue);
             $ticket->priority   = trim($elements[3]->nodeValue);
             $ticket->status     = trim($elements[4]->nodeValue);
             $date = trim($elements[5]->nodeValue); $els = explode('/', $date);
@@ -162,6 +196,7 @@ final class MyTickets {
                 $totalNonBillableHours += $tickets[$i]->non_billable_hours;
                 $this->msg(
                     '-- Ticket #'.$tickets[$i]->id.': ' . $tickets[$i]->name . "\n" .
+                    '---- Project: ' . $tickets[$i]->project_name . "\n" .
                     '---- Billable hours = ' . $tickets[$i]->billable_hours . "\n" .
                     '---- Non-billable hours = ' . $tickets[$i]->non_billable_hours
                 );
@@ -176,6 +211,7 @@ final class MyTickets {
         $content = '';
         foreach ($tickets as $t) {
             $content .= '#'.$t->id.': '.$t->name . "\n";
+            $content .= 'Project: '.$t->project_name . "\n";
             $content .= 'Billable hours = ' . $t->billable_hours . "\n";
             $content .= 'Non-billable hours = ' . $t->non_billable_hours . "\n";
             $content .= "------------------------------------------------------------\n\n";
@@ -255,16 +291,6 @@ final class MyTickets {
         
         // return
         return array('billable_hours' => $billHours, 'non_billable_hours' => $nonBillHours);
-    }
-    
-    /**
-     * Invoke this function to simply test the home page html response
-     */
-    public function getProjectIds() {
-        if (!count($this->_projectIds)) {
-            $this->_fetchProjectIds();
-        }
-        //print_r($this->_projectIds);
     }
     
     private function _fetchProjectIds() {

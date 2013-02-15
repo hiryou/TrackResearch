@@ -6,16 +6,30 @@ Please included license in COPYING
 CONTENTS OF THIS FILE
 ---------------------
 
+ * Introduction
  * Installation
- * Usage
+ * Usage overview
  * Usage examples
+ 
+ 
+INTRODUCTION
+------------
+
+This script is designed to help ARC employees report their hours on TRACK more accurately 
+and easily (for the mean time until we improve the TRACK system). You can use it to extract 
+your total working time in a given time range and being filtered by project name(s). You must 
+be an ARC employee with an active ODIN account to use this script.
 
 
 INSTALLATION
 ------------
 
-- Check to see if php cli (PHP for command line) is installed on your box. From
-your terminal, execute the following command:
+As far as I know, all boxes in ARC office are loaded with necessary prerequisite packages.
+If you are on any of them, feel free to skip to step 4. Otherwise, follow this instruction for
+your local box.
+
+1. Verify php cli (PHP for command line) is installed. From your terminal, execute the 
+following command:
     $ php -v
   If you see something like this:
     # PHP 5.3.10-1ubuntu3.5 with Suhosin-Patch (cli) (built: Jan 18 2013 23:40:19) 
@@ -24,51 +38,69 @@ your terminal, execute the following command:
   It means you're good to go. Otherwise, proceed to install php cli by running
 this command:
     $ sudo apt-get php
-- Check to see if curl is installed for your php cli:
+
+2. Verify curl is installed for your php cli:
     $ curl -V
-  If you see something like this:
+  You should see some info like this:
     # curl 7.22.0 (x86_64-pc-linux-gnu) libcurl/7.22.0 OpenSSL/1.0.1 zlib/1.2.3.4 
     # libidn/1.23 librtmp/2.3
     # Protocols: dict file ftp ftps gopher http https imap imaps ldap pop3 pop3s 
     # rtmp rtsp smtp smtps telnet tftp 
     # Features: GSS-Negotiate IDN IPv6 Largefile NTLM NTLM_WB SSL libz TLS-SRP
-  Then curl was installed. Otherwise, proceed to get curl packages:
+  Otherwise, proceed to get the required curl packages:
     $ sudo apt-get install curl libcurl3 libcurl3-dev php5-curl
-- Restart your XAMPP/Apache server if have you just installed curl
-- Copy folder "src" to your workspace and rename it to whatever makes sense for 
-you. This contains everthing needed. The script will be executed via src/main.php
+
+3. Restart your XAMPP/Apache server if you have just installed curl
+
+4. Copy folder "src" to your workspace. The complete scripts reside in this folder.
 
 
-USAGE
------
+USAGE OVERVIEW
+--------------
 
 - Open your terminal and locate to src folder. Suppose you are already in src.
-- Usage and options:
-    $ php main.php -f [from_date] -t [to_date] -u [odin_username] -p
-    # You'll be prompted to input your ODIN password securely
+- Synopsis:
     
-    -f: From date, in Y-m-d format, e.g. 2012-07-01
-    -t: To date, in Y-m-d format, e.g. 2012-12-31
-    -u: To input your ODIN username, i.e. without the "@pdx.edu"
-    -p: To input your ODIN password. You can just leave this option unspecified
-        in order to be prompted for password input
+    $ php main.php -u [odin_username] -f [from_date] -t [to_date] -p [password] -pj [project_names]
+    # You'll be prompted to input your ODIN password securely
+
+- Options:
+    
+    [Required arguments]
+    -f: From date, in Y-m-d format, e.g. '2012-07-01' (without quote)
+    -t: To date, in Y-m-d format, e.g. '2012-12-31' (without quote)
+    -u: Specifies your ODIN username without the "@pdx.edu" part
+        
+    [Optional arguments]
+    -p:  Should be left unspecified to be prompted for secure password typing
+    -pj: To filter by project names. Project names must be separated by comma and has no space
+         in between. e.g. 'otrec', or 'otrec,capstone,osbit' (no quote). If this is left empty, 
+         all your tickets will be fetched.
+         
+- How to specify correct project names for -pj?
+    * Login to track.reserach.pdx.edu with your ODIN account
+    * Go to http://track.research.pdx.edu/my
+    * Notice the "Filter results" box on the right side. Click the textbox under "Project", you will
+      see a list of project names. Btw, you must know your project name(s) better than anyone else! 
 
 
 USAGE EXAMPLES
 --------------
 
-The current version fetches all of your tickets on TRACK, i.e. everything you have
-been working on will be reported. I'll update it soon to allow filtering by project(s).
-
-Suppose my ODIN username is longuyen. I want to report my working hours from Jul 01,
+* Suppose my ODIN username is longuyen. I want to report all of my working hours from Jul 01,
 2012 to Dec 31, 2012. Below is how I'll specify my arguments:
-    $ php main.php -f 2012-07-01 -t 2012-12-31 -p -u longuyen
+    $ php main.php -u longuyen -f 2012-07-01 -t 2012-12-31 -p
     # Password prompt
     
-Depend on how many tickets you have, the script may take up to 5 minutes to fetch 
-all of them. Detailed statistics will be printed on your terminal. They are also 
-saved in newly created .txt files which you will find in the this folder when the 
-script terminates.
-
-
+* Now I just want to report tickets on OTREC:
+    $ php main.php -u longuyen -f 2012-07-01 -t 2012-12-31 -pj otrec
+    # Password prompt
+    
+* To filter for multiple projects, e.g. OTREC, Capstone, and Osbit:
+    $ php main.php -u longuyen -f 2012-07-01 -t 2012-12-31 -pj otrec,capstone,osbit
+    # Password prompt
+    
+Depend on how many tickets you have, the script may take up to 5 minutes to fetch them. 
+Detailed statistics will be printed on your terminal. They are also saved in the newly 
+created .txt files which you will find in the this folder when the script terminates.
 
