@@ -25,8 +25,8 @@ INSTALLATION
 ------------
 
 As far as I know, all boxes in ARC office are loaded with necessary prerequisite packages.
-If you are on any of them, feel free to skip to step 4. Otherwise, follow this instruction for
-your local box.
+If you are on any of them, feel free to skip to step 4. Otherwise, follow the full instruction 
+for your local box.
 
 1. Verify php cli (PHP for command line) is installed. From your terminal, execute the 
 following command:
